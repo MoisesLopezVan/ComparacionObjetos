@@ -11,7 +11,7 @@ package genericalista;
  */
 public class Lista<T> {
     private Node<T> head;
-    private int listCount;
+    private int listCount= -1;
     
     public Lista(){
         head = new Node(null);
@@ -29,6 +29,39 @@ public class Lista<T> {
         listCount++;
     }
     
+    public void ObjectPosicion(T dato, int posicion) {
+
+        Node<T> nuevo = new Node<>(dato);
+        
+        if(head.getNext() == null){
+            head.setNext((Node<T>) nuevo);
+    
+        }
+        else{  
+            if(posicion <= 1){
+                nuevo.setNext((Node<T>) head.getNext());
+                head.setNext((Node<T>) nuevo);
+            }
+    
+            if(posicion > listCount){
+                
+                Node<T> aux = head;
+                while(aux.getNext() != null){
+                    aux = aux.getNext();
+                }
+                aux.setNext((Node<T>) nuevo);
+            }
+            if(posicion > 1 && posicion <= listCount){
+                Node <T> aux = head;
+                for(int i=1; i < posicion; i++){
+                    aux = aux.getNext();
+                }
+                nuevo.setNext((Node<T>) aux.getNext());
+                aux.setNext ((Node<T>) nuevo);
+            }	
+        }
+        listCount++;
+    }
     
     public T get(int index){
         if(index < 0){

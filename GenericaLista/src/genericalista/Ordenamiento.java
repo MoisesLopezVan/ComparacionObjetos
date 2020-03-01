@@ -11,27 +11,28 @@ package genericalista;
  */
 public class Ordenamiento<T extends Comparable<T>> {
     
-    public int orden(Lista<T>a, T b, boolean d){      
+    public Lista<T> orden(Lista<T>a){      
        int iter=0;
 
-       for(int i=1; i <= a.size()-1; i++){
-            a = (Lista<T>) a.get(i);
+       for(int i=1; i < a.size()-1; i++){
+            T menor = a.get(i);
             int menorcito = i;
-           for(int j = (i+1); i < a.size(); i++){
-                b = a.get(j);
-                if(b.compareTo(a.get(i)) == 0){
-                    a = (Lista<T>) a.get(j);
+           for(int j = (i+1); j < a.size(); i++){
+                T b = a.get(j);
+                if(b.compareTo(menor) < 0){
+                    menor = a.get(j);
                     menorcito = j;
-                    if(d)
+                    /*if(d)
                          System.out.println("Iteraciones: " + iter);
-                    return i;
+                    return i;*/
                 }  
-           }          
+           }    
+           T temporal = a.get(i);
+           a.ObjectPosicion(menor,i);
+           a.ObjectPosicion(temporal,menorcito);
            /*if(d)
                 iter++;*/
        }  
-       if(d)
-            System.out.println("Iteraciones: " + iter);
-       return -1;
+       return a;
     }
 }

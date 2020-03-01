@@ -15,41 +15,47 @@ public class ListaSimpleTest {
     
     public static void main(String [] args){
 
-        Scanner sc = new Scanner(System.in);
+      Scanner sc = new Scanner(System.in);
                        
         Lista<Automovil> listaAutomovil = new Lista<>();
         Ordenamiento<Automovil> buscaAutomovil = new Ordenamiento<>();
         int elementos;
+
         
         //Primer Impelementacion
-        //System.out.println("Cuantos elementos desee ingresar: ");
-        //elementos = sc.nextInt();
+        System.out.println("Cuantos elementos desee ingresar: ");
+        elementos = sc.nextInt();
         
-        System.out.print("Ingrese una marca: ");
-        String marca = sc.nextLine();
-        System.out.print("Ingrese un color: ");
-        String color = sc.nextLine();
-        Automovil buscar = new Automovil(marca,color);
-        listaAutomovil.add(buscar);
-        System.out.println("Resultado: "+marca.compareTo(color));
-        int S = marca.compareTo(color);
+        for( int i=0; i < elementos; i++){
+            sc.nextLine();
+            System.out.print("Ingrese una marca: ");
+            String marca = sc.nextLine();
+            System.out.print("Ingrese un color: ");
+            String color = sc.nextLine();
+            System.out.print("Ingrese el año del vehiculo: ");
+            int año = sc.nextInt();
+            Automovil buscar = new Automovil(marca,color,año);
+            listaAutomovil.add(buscar);
+            System.out.println("Resultado: "+marca.compareTo(color));
+            int S = marca.compareTo(color);
 
-        if(S < 0){
-            System.out.println(marca + " es mas alto que " + color);
-        }else{
-           if(S == 0){
-                System.out.println(marca + " es igual que " + color);
-           }else{
-               if(S < 0){
-                    System.out.println(marca + " es menor que " + color);
+            if(S < 0){
+                System.out.println(marca + " es mas alto que " + color);
+            }else{
+               if(S == 0){
+                    System.out.println(marca + " es igual que " + color);
+               }else{
+                   if(S < 0){
+                        System.out.println(marca + " es menor que " + color);
+                   }
                }
-           }
-        } 
-        System.out.println("Lista de Automovil Actual: " + listaAutomovil);
-        System.out.println("Elementos: " + listaAutomovil.size()); 
-        System.out.println("Posicion encontrado: " + buscaAutomovil.orden(listaAutomovil,buscar, true));
-     
-        
+            } 
+            System.out.println("Lista de Automovil Anterior: " + listaAutomovil);
+            System.out.println("Elementos: " + listaAutomovil.size());
+            listaAutomovil = buscaAutomovil.orden(listaAutomovil);
+           // System.out.println("Posicion encontrado: " + buscaAutomovil.orden(listaAutomovil));
+        }
+       System.out.println("Posicion encontrado actual: " + listaAutomovil);
         //Segunda Impelementacion
        /* Automovil f1= new Automovil("Nisann" , "verde");
         Automovil f2= new Automovil("Toyota" , "blanco");
@@ -80,8 +86,6 @@ public class ListaSimpleTest {
                }
            }
         }*/
-
- 
        
     }
 }
