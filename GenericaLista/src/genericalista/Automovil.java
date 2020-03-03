@@ -13,18 +13,18 @@ public class Automovil implements Comparable<Automovil>{
     
     private String marca;
     private String color;
-    private int añoVehiculo;
+    private int anioVehiculo;
     
     public Automovil(String m, String c, int v) {
         marca = m;
         color = c;
-        añoVehiculo = v;
+        anioVehiculo = v;
     }
 
    @Override
     public int compareTo(Automovil a) {
         //return getMarca().compareTo(a.getMarca());
-        return this.añoVehiculo - a.getAñoVehiculo();
+        return this.anioVehiculo - a.getanioVehiculo();
     }
     
     public String getMarca() {
@@ -35,12 +35,12 @@ public class Automovil implements Comparable<Automovil>{
         this.marca = marca;
     }
 
-    public int getAñoVehiculo() {
-        return añoVehiculo;
+    public int getanioVehiculo() {
+        return anioVehiculo;
     }
 
-    public void setAñoVehiculo(int añoVehiculo) {
-        this.añoVehiculo = añoVehiculo;
+    public void setanioVehiculo(int anioVehiculo) {
+        this.anioVehiculo = anioVehiculo;
     }
 
     public String getColor() {
@@ -52,7 +52,7 @@ public class Automovil implements Comparable<Automovil>{
     }
     
     public String toString(){
-        return marca + " - " + color + " - " + añoVehiculo;
+        return marca + " - " + color + " - " + anioVehiculo;
     }
     
    

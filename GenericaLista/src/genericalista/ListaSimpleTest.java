@@ -52,10 +52,10 @@ public class ListaSimpleTest {
             } 
             System.out.println("Lista de Automovil Anterior: " + listaAutomovil);
             System.out.println("Elementos: " + listaAutomovil.size());
-            listaAutomovil = buscaAutomovil.orden(listaAutomovil);
            // System.out.println("Posicion encontrado: " + buscaAutomovil.orden(listaAutomovil));
         }
-       System.out.println("Posicion encontrado actual: " + listaAutomovil);
+        listaAutomovil = buscaAutomovil.orden(listaAutomovil);
+        System.out.println("Posicion encontrado actual: " + listaAutomovil);
         //Segunda Impelementacion
        /* Automovil f1= new Automovil("Nisann" , "verde");
         Automovil f2= new Automovil("Toyota" , "blanco");
