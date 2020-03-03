@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genericalista;
+package listaenlazada;
 
 import java.util.Scanner;
 
@@ -18,74 +18,47 @@ public class ListaSimpleTest {
       Scanner sc = new Scanner(System.in);
                        
         Lista<Automovil> listaAutomovil = new Lista<>();
-        Ordenamiento<Automovil> buscaAutomovil = new Ordenamiento<>();
-        int elementos;
-
+        int elementos = 0;
+        String marca;
+        String color;
+        int anio;
+        Automovil auto = null;
         
         //Primer Impelementacion
-        System.out.println("Cuantos elementos desee ingresar: ");
+        System.out.println("Cantidad de Automoviles a ingresar: ");
         elementos = sc.nextInt();
         
         for( int i=0; i < elementos; i++){
-            sc.nextLine();
-            System.out.print("Ingrese una marca: ");
-            String marca = sc.nextLine();
-            System.out.print("Ingrese un color: ");
-            String color = sc.nextLine();
-            System.out.print("Ingrese el año del vehiculo: ");
-            int año = sc.nextInt();
-            Automovil buscar = new Automovil(marca,color,año);
-            listaAutomovil.add(buscar);
-            System.out.println("Resultado: "+marca.compareTo(color));
-            int S = marca.compareTo(color);
-
-            if(S < 0){
-                System.out.println(marca + " es mas alto que " + color);
-            }else{
-               if(S == 0){
-                    System.out.println(marca + " es igual que " + color);
-               }else{
-                   if(S < 0){
-                        System.out.println(marca + " es menor que " + color);
-                   }
-               }
-            } 
-            System.out.println("Lista de Automovil Anterior: " + listaAutomovil);
-            System.out.println("Elementos: " + listaAutomovil.size());
-           // System.out.println("Posicion encontrado: " + buscaAutomovil.orden(listaAutomovil));
+        	
+        	sc.nextLine();
+            System.out.print("\nIngrese una marca: ");
+            marca = sc.nextLine();
+            
+            System.out.print("\nIngrese un color: ");
+            color = sc.nextLine();
+            
+            System.out.print("\nIngrese el anio del Automoviles: ");
+            anio = sc.nextInt();
+            
+            auto = new Automovil(marca,color,anio);
+            System.out.println("\nSe anadio el Automovi: " + listaAutomovil.add(auto));
+            
         }
-        listaAutomovil = buscaAutomovil.orden(listaAutomovil);
-        System.out.println("Posicion encontrado actual: " + listaAutomovil);
-        //Segunda Impelementacion
-       /* Automovil f1= new Automovil("Nisann" , "verde");
-        Automovil f2= new Automovil("Toyota" , "blanco");
-        Automovil f3= new Automovil("Pastrana" , "blanco");
-        Automovil f4= new Automovil("Dodge" , "blanco");
-        Automovil f5= new Automovil("Chevrolet" , "verde");
         
-        listaAutomovil.add(f1);
-        listaAutomovil.add(f3);
-        listaAutomovil.add(f4);
-        listaAutomovil.add(f2);
-        listaAutomovil.add(f5);*/
+        // Por defecto cada que añadimos un automovil ( add(T obj) ) la lista se auto-ordena
+        System.out.println("\nLista Automoviles ordenada: \n" + listaAutomovil);
         
-        //System.out.println("sList.remove(2) - remove 2nd element: " + listaAutomovil.remove(2));
-        //System.out.println("Lista de Automovil Reciente: " + listaAutomovil);
-        /*System.out.println("Resultado: "+f1.compareTo(f2));
+        listaAutomovil.remove(0);
+        System.out.println("\nLista Automoviles, sin el primer Automovil: \n" + listaAutomovil);
         
-        int S = f1.compareTo(f2);
+        Automovil buscarAutomovil = new Automovil("honda", "cafe", 2012);
         
-        if(S < 0){
-            System.out.println(f1 + " es mas alto que " + f2);
-        }else{
-           if(S == 0){
-                System.out.println(f1 + " es igual que " + f2);
-           }else{
-               if(S < 0){
-                    System.out.println(f1 + " es menor que " + f2);
-               }
-           }
-        }*/
+        System.out.println(
+        		"\nSi existe un vehiculo anio 2012, se muestra: \n"
+        		+ listaAutomovil.existeObj(buscarAutomovil)
+        );
        
+        listaAutomovil.clear();
+        System.out.println("\nLista Automoviles que deberia estar vacia: \n" + listaAutomovil);
     }
 }
