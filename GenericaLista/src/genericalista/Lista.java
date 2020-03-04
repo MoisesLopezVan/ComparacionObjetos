@@ -107,22 +107,26 @@ public class Lista<T extends Comparable<T>> {
         return Current;
     } 
     
-    public boolean remove(int index)
     // remueve el elemento en la posiciï¿½n indicada
-    {
-        // 
-        if (index < 0 || index > (size() - 1) )
-            return false;
-        
-        Node<T> Current = head;
-        for (int i = 0; i < index; i++) {
-            if (Current.getNext() == null)
+    public boolean remove(int index) {
+        try {
+            if (index < 0 || index > (size() - 1) )
                 return false;
-             Current = Current.getNext();
+            
+            Node<T> Current = head;
+            for (int i = 0; i < index; i++) {
+                if (Current.getNext() == null)
+                    return false;
+                Current = Current.getNext();
+            }
+            Current.setNext(Current.getNext().getNext());
+            listCount--; // disminuimos el contador de nodos
+            return true;
         }
-        Current.setNext(Current.getNext().getNext());
-        listCount--; // disminuimos el contador de nodos
-        return true;
+        catch(Exception e) {
+            e.printStackTrace()
+            return false;
+        }
     }
  
     // returns the number of elements in this list.
